@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grocery/pages/dashboard/dashboard_controller.dart';
 import 'package:grocery/pages/home/home_page.dart';
-import 'package:grocery/theme/app_theme.dart';
+import 'package:grocery/themes/app_theme.dart';
 
 class DashboardPage extends GetView<DashboardController> {
   const DashboardPage({super.key});
@@ -22,6 +22,7 @@ class DashboardPage extends GetView<DashboardController> {
                         Container(color: Colors.yellow),
                         Container(color: Colors.green),
                         Container(color: Colors.red),
+                        Container(color: Colors.blue),
                       ],
                     ))),
           ],
@@ -33,12 +34,16 @@ class DashboardPage extends GetView<DashboardController> {
                   label: 'Trang chủ',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.menu_sharp),
+                  icon: Icon(Icons.category_outlined),
                   label: 'Danh mục',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.messenger_outline_sharp),
+                  icon: Icon(Icons.messenger_outline_outlined),
                   label: 'Tin nhắn',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.notifications_active_outlined),
+                  label: 'Thông báo',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.person_outline_rounded),

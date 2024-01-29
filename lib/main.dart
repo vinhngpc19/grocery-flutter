@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:grocery/routes/app_route.dart';
-import 'package:grocery/theme/app_theme.dart';
+import 'package:grocery/themes/app_theme.dart';
 
 void main() {
   runApp(const MyApp());
