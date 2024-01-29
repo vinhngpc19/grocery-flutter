@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grocery/pages/home/home_page.dart';
+import 'package:get/route_manager.dart';
+import 'package:grocery/routes/app_route.dart';
+import 'package:grocery/theme/app_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,13 +12,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+    return GetMaterialApp(
+      theme: AppTheme.lightTheme,
+      getPages: AppRoute.pages,
+      initialRoute: AppRoute.routerDashboard,
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
     );
   }
 }
