@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
-
-import '../../remote_config/config.dart';
+import '../../remote_config/api_manager/rest_client.dart';
 
 class DashboardController extends GetxController {
   RxInt currentIndex = 0.obs;
@@ -8,7 +7,7 @@ class DashboardController extends GetxController {
   void onTapIndex(int index) {
     currentIndex.value = index;
     if (index == 2) {
-      Config.getListProducts();
+      RestClient().getListProducts(pageNumber: 2);
     }
   }
 }

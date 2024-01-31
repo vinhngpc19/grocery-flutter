@@ -1,19 +1,36 @@
+class ProductModels {
+  List<ProductModel>? data;
+
+  ProductModels({
+    this.data,
+  });
+
+  factory ProductModels.fromJson(Map<String, dynamic> json) => ProductModels(
+        data: json["data"] == null
+            ? []
+            : List<ProductModel>.from(
+                json["data"]!.map((x) => ProductModel.fromJson(x))),
+      );
+}
+
 class ProductModel {
   String? id;
   String? name;
-  String? image;
-  String? price;
-  String? quantity;
-  String? categoryId;
+  String? imgUrl;
+  String? firstPrice;
+  String? currentPrice;
+  int? quantity;
+  int? categoryId;
   String? description;
-  DateTime? createdAt;
-  DateTime? updatedAt;
+  String? createdAt;
+  String? updatedAt;
 
   ProductModel({
     this.id,
     this.name,
-    this.image,
-    this.price,
+    this.imgUrl,
+    this.firstPrice,
+    this.currentPrice,
     this.quantity,
     this.categoryId,
     this.description,
@@ -22,30 +39,15 @@ class ProductModel {
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
-        id: json["id"],
+        id: json["_id"],
         name: json["name"],
-        image: json["image"],
-        price: json["price"],
+        imgUrl: json["imgUrl"],
+        firstPrice: json["firstPrice"],
+        currentPrice: json["currentPrice"],
         quantity: json["quantity"],
-        categoryId: json["category_id"],
+        categoryId: json["categoryId"],
         description: json["description"],
-        createdAt: json["created_at"] == null
-            ? null
-            : DateTime.parse(json["created_at"]),
-        updatedAt: json["updated_at"] == null
-            ? null
-            : DateTime.parse(json["updated_at"]),
+        createdAt: json["createdAt"],
+        updatedAt: json["updatedAt"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "image": image,
-        "price": price,
-        "quantity": quantity,
-        "category_id": categoryId,
-        "description": description,
-        "created_at": createdAt?.toIso8601String(),
-        "updated_at": createdAt?.toIso8601String(),
-      };
 }
