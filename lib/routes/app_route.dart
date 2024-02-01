@@ -9,6 +9,6 @@ class AppRoute {
 
   static List<GetPage> pages = [
     GetPage(name: routerDashboard, page: () => const DashboardPage()),
-    GetPage(name: routerHome, page: () => const HomePage()),
+    GetPage(name: routerHome, page: () => HomePage()),
   ];
 }

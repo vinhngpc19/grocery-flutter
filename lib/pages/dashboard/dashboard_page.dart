@@ -18,7 +18,7 @@ class DashboardPage extends GetView<DashboardController> {
                 child: Obx(() => IndexedStack(
                       index: controller.currentIndex.value,
                       children: [
-                        const HomePage(),
+                        HomePage(),
                         Container(color: Colors.yellow),
                         Container(color: Colors.green),
                         Container(color: Colors.red),
