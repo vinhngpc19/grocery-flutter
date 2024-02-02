@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grocery/pages/dashboard/dashboard_controller.dart';
 import 'package:grocery/pages/home/home_page.dart';
+import 'package:grocery/pages/profile/profile_page.dart';
 import 'package:grocery/themes/app_theme.dart';
 
 class DashboardPage extends GetView<DashboardController> {
-  const DashboardPage({super.key});
+  DashboardPage({super.key});
 
   @override
+  final DashboardController controller = Get.put(DashboardController());
+  @override
   Widget build(BuildContext context) {
-    final DashboardController controller = Get.put(DashboardController());
     return Scaffold(
         body: SafeArea(
             child: Column(
@@ -22,7 +24,7 @@ class DashboardPage extends GetView<DashboardController> {
                         Container(color: Colors.yellow),
                         Container(color: Colors.green),
                         Container(color: Colors.red),
-                        Container(color: Colors.blue),
+                        ProfilePage()
                       ],
                     ))),
           ],
@@ -52,9 +54,10 @@ class DashboardPage extends GetView<DashboardController> {
               ],
               backgroundColor: Colors.white,
               selectedItemColor: Colors.red,
+              unselectedItemColor: AppTheme.greyIcon,
               type: BottomNavigationBarType.fixed,
               selectedLabelStyle: const TextStyle(fontSize: 12),
-              unselectedItemColor: AppTheme.lightSecondaryColor,
+              // unselectedItemColor: AppTheme.lightSecondaryColor,
               currentIndex: controller.currentIndex.value,
               onTap: controller.onTapIndex,
             )));

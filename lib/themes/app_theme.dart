@@ -4,12 +4,13 @@ import 'package:flutter/services.dart';
 
 class AppTheme {
   static Color lightBackgroundColor = const Color(0xfff2f2f2);
-  static Color lightPrimaryColor = Colors.red;
+  static Color lightPrimaryColor = const Color(0xffEA2027);
   static Color lightSecondaryColor = const Color(0xff040415);
   static Color lightAccentColor = Colors.blueGrey.shade200;
   static Color lightParticlesColor = const Color(0x44948282);
   static Color lightTextColor = Colors.black54;
   static Color grey = const Color.fromARGB(255, 239, 239, 239);
+  static Color greyIcon = const Color(0xff868686);
 
   const AppTheme._();
 
@@ -21,7 +22,7 @@ class AppTheme {
       textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(foregroundColor: lightBackgroundColor)),
       colorScheme: ColorScheme.light(secondary: lightSecondaryColor)
-          .copyWith(background: lightBackgroundColor));
+          .copyWith(background: Colors.red));
 
   static Brightness get currentSystemBrightness =>
       // ignore: deprecated_member_use

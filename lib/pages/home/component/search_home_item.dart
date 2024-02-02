@@ -12,32 +12,44 @@ class _SearchHomeWidgetState extends State<SearchHomeWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80,
+      height: 64,
       color: AppTheme.lightPrimaryColor,
-      alignment: Alignment.center,
-      child: _searchInputText(),
-    );
-  }
-
-  Widget _searchInputText() {
-    return Padding(
-      padding: const EdgeInsets.only(left: 14, right: 14, top: 10),
-      child: SizedBox(
-        height: 35,
-        child: TextFormField(
-          controller: TextEditingController(),
-          decoration: InputDecoration(
-            fillColor: Colors.white,
-            filled: true,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(5.0),
-              borderSide: BorderSide.none,
+      alignment: Alignment.bottomCenter,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: Row(
+          children: [
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.only(left: 14),
+                color: Colors.white,
+                height: 32,
+                child: Row(children: [
+                  const SizedBox(width: 6),
+                  const Icon(Icons.search, size: 22, color: Color(0xff868686)),
+                  const SizedBox(width: 2),
+                  Expanded(
+                    child: Text('Tìm kiếm sản phẩm',
+                        style:
+                            TextStyle(fontSize: 14, color: AppTheme.greyIcon)),
+                  ),
+                  const Icon(Icons.camera_alt_outlined,
+                      size: 22, color: Color(0xff868686)),
+                  const SizedBox(width: 6),
+                ]),
+              ),
             ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(5.0),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12),
+              child: Icon(Icons.notifications_active_outlined,
+                  size: 26, color: Colors.white),
             ),
-          ),
+            const Padding(
+              padding: EdgeInsets.only(right: 14),
+              child: Icon(Icons.shopping_cart_outlined,
+                  size: 26, color: Colors.white),
+            ),
+          ],
         ),
       ),
     );
