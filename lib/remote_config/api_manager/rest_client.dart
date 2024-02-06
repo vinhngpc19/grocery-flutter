@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:grocery/models/product_model.dart';
 import 'package:http/http.dart' as http;
 
-String baseUrl = 'http://192.168.1.56:3000/';
+String baseUrl = 'http://192.168.1.64:3000/';
 
 class RestClient {
   Future<ProductModels> getListProducts({required int pageNumber}) async {
@@ -21,7 +21,6 @@ class RestClient {
     final response = await http.get(Uri.parse('${baseUrl}product/detail/$id'));
     if (response.statusCode == 200) {
       final product = ProductModel.fromJson(jsonDecode(response.body));
-      print(response.body);
       return product;
     } else {
       throw Exception('Failed to load album');

@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:grocery/models/product_model.dart';
 import 'package:grocery/remote_config/api_manager/rest_client.dart';
+import 'package:grocery/routes/app_route.dart';
 
 class HomeController extends GetxController {
   final RxList<ProductModel> listProducts = <ProductModel>[].obs;
@@ -10,5 +11,9 @@ class HomeController extends GetxController {
     var list = await restClient.getListProducts(pageNumber: 2);
     listProducts.value = list.data ?? [];
     super.onInit();
+  }
+
+  void onTapItem(String id) {
+    Get.toNamed(AppRoute.routerDetail, arguments: [id]);
   }
 }

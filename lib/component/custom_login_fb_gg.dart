@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery/r.dart';
 
 class CustomLoginFbGg extends StatelessWidget {
   const CustomLoginFbGg({super.key, required this.title});
@@ -8,12 +9,12 @@ class CustomLoginFbGg extends StatelessWidget {
     return Column(
       children: [
         Text(title),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/google.png',
+              AssetImages.google,
               height: 32,
               width: 32,
             ),
@@ -21,7 +22,7 @@ class CustomLoginFbGg extends StatelessWidget {
               width: 20,
             ),
             Image.asset(
-              'assets/images/facebook.png',
+              AssetImages.facebook,
               height: 32,
               width: 32,
             ),

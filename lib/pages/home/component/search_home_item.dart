@@ -23,10 +23,10 @@ class _SearchHomeWidgetState extends State<SearchHomeWidget> {
               child: Container(
                 margin: const EdgeInsets.only(left: 14),
                 color: Colors.white,
-                height: 32,
+                height: 36,
                 child: Row(children: [
                   const SizedBox(width: 6),
-                  const Icon(Icons.search, size: 22, color: Color(0xff868686)),
+                  const Icon(Icons.search, size: 24, color: Color(0xff868686)),
                   const SizedBox(width: 2),
                   Expanded(
                     child: Text('Tìm kiếm sản phẩm',
@@ -34,20 +34,19 @@ class _SearchHomeWidgetState extends State<SearchHomeWidget> {
                             TextStyle(fontSize: 14, color: AppTheme.greyIcon)),
                   ),
                   const Icon(Icons.camera_alt_outlined,
-                      size: 22, color: Color(0xff868686)),
+                      size: 24, color: Color(0xff868686)),
                   const SizedBox(width: 6),
                 ]),
               ),
             ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 12),
-              child: Icon(Icons.notifications_active_outlined,
-                  size: 26, color: Colors.white),
+              child: Icon(Icons.notifications, size: 24, color: Colors.white),
             ),
             const Padding(
               padding: EdgeInsets.only(right: 14),
-              child: Icon(Icons.shopping_cart_outlined,
-                  size: 26, color: Colors.white),
+              child: Icon(Icons.shopping_cart_rounded,
+                  size: 24, color: Colors.white),
             ),
           ],
         ),

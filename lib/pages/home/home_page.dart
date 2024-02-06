@@ -68,8 +68,8 @@ class HomePage extends GetView<HomeController> {
                   itemBuilder: (BuildContext context, int index) {
                     final listProducts = controller.listProducts;
                     return ProductItem(
-                      productModel: listProducts[index],
-                    );
+                        productModel: listProducts[index],
+                        onTapItem: controller.onTapItem);
                   },
                 )),
           ),
