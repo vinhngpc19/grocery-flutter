@@ -19,19 +19,32 @@ class MyApp extends StatelessWidget {
     // set appbar status color
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: AppTheme.lightPrimaryColor));
-    return GetMaterialApp(
-      localizationsDelegates: const [
-        RefreshLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en'),
-        Locale('uk'),
-      ],
-      locale: const Locale('en'),
-      theme: AppTheme.lightTheme,
-      getPages: AppRoute.pages,
-      initialRoute: AppRoute.routerDashboard,
-      debugShowCheckedModeBanner: false,
+    return RefreshConfiguration(
+      maxOverScrollExtent:
+          100, //The maximum dragging range of the head. Set this property if a rush out of the view area occurs
+      maxUnderScrollExtent: 0, // Maximum dragging range at the bottom
+      enableScrollWhenRefreshCompleted:
+          true, //This property is incompatible with PageView and TabBarView. If you need TabBarView to slide left and right, you need to set it to true.
+      enableLoadingWhenFailed:
+          true, //In the case of load failure, users can still trigger more loads by gesture pull-up.
+      hideFooterWhenNotFull:
+          false, // Disable pull-up to load more functionality when Viewport is less than one screen
+      enableBallisticLoad: true, // tri
+      child: GetMaterialApp(
+        scrollBehavior: const ScrollBehavior().copyWith(overscroll: false),
+        localizationsDelegates: const [
+          RefreshLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('en'),
+          Locale('uk'),
+        ],
+        locale: const Locale('en'),
+        theme: AppTheme.lightTheme,
+        getPages: AppRoute.pages,
+        initialRoute: AppRoute.routerDashboard,
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }
