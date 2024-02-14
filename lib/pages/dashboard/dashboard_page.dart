@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grocery/pages/dashboard/dashboard_controller.dart';
+import 'package:grocery/pages/home/category/category_page.dart';
 import 'package:grocery/pages/home/home_page.dart';
 import 'package:grocery/pages/profile/profile_page.dart';
 import 'package:grocery/themes/app_theme.dart';
@@ -21,7 +22,7 @@ class DashboardPage extends GetView<DashboardController> {
                       index: controller.currentIndex.value,
                       children: [
                         HomePage(),
-                        Container(color: Colors.yellow),
+                        CategoryPage(),
                         Container(color: Colors.green),
                         Container(color: Colors.red),
                         ProfilePage()

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:grocery/themes/app_theme.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({super.key, required this.title, required this.onTap});
@@ -13,9 +12,9 @@ class CustomButton extends StatelessWidget {
       child: Container(
         height: 46,
         width: Get.width,
-        decoration: BoxDecoration(
-            color: AppTheme.lightPrimaryColor,
-            borderRadius: const BorderRadius.all(Radius.circular(5))),
+        decoration: const BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.all(Radius.circular(5))),
         child: Center(
           child: Text(
             title,

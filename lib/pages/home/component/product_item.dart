@@ -28,7 +28,7 @@ class ProductItem extends StatelessWidget {
                   topLeft: Radius.circular(10), topRight: Radius.circular(10)),
               child: Image.network(
                 productModel.imgUrl ?? '',
-                fit: BoxFit.cover,
+                fit: BoxFit.fitHeight,
                 height: 150,
                 width: Get.width,
               ),

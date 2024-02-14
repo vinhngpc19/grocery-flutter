@@ -3,13 +3,14 @@ import 'package:get/get.dart';
 import 'package:grocery/component/custom_button.dart';
 import 'package:grocery/component/custom_input_text.dart';
 import 'package:grocery/component/custom_login_fb_gg.dart';
-import 'package:grocery/pages/sign_in/sign_in_controller.dart';
+import 'package:grocery/pages/sign_up/sign_up_controller.dart';
 import 'package:grocery/routes/app_route.dart';
 
-class SignInPage extends GetView<SignInController> {
+class SignUpPage extends GetView<SignUpController> {
+  SignUpPage({super.key});
+
   @override
-  final controller = Get.put(SignInController());
-  SignInPage({super.key});
+  final controller = Get.put(SignUpController());
 
   @override
   Widget build(BuildContext context) {
@@ -31,33 +32,26 @@ class SignInPage extends GetView<SignInController> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text('Đăng nhập tài khoản',
+                          const Text('Tạo tài khoản mới',
                               style: TextStyle(
                                   fontSize: 24, fontStyle: FontStyle.italic)),
                           const SizedBox(height: 30),
+                          const CustomInputText(hintText: 'Nhập tên tài khoản'),
+                          const SizedBox(height: 10),
                           const CustomInputText(hintText: 'Nhập địa chỉ Email'),
                           const SizedBox(height: 10),
                           const CustomInputText(
                               hintText: 'Nhập mật khẩu',
                               type: TextInputType.visiblePassword,
                               isPassword: true),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Text('Quên mật khẩu',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontStyle: FontStyle.italic,
-                                        color: const Color(0xff000000)
-                                            .withOpacity(0.6))),
-                              ],
-                            ),
-                          ),
+                          const SizedBox(height: 10),
+                          const CustomInputText(
+                              hintText: 'Xác nhận mật khẩu',
+                              type: TextInputType.visiblePassword,
+                              isPassword: true),
                           const SizedBox(height: 30),
                           CustomButton(
-                            title: 'Đăng nhập',
+                            title: 'Đăng ký',
                             onTap: () {},
                           ),
                           const SizedBox(height: 30),
@@ -66,15 +60,14 @@ class SignInPage extends GetView<SignInController> {
                           Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text('Bạn chưa có tài khoản?'),
+                                const Text('Bạn đã có tài khoản? '),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 6),
                                   child: GestureDetector(
-                                      behavior: HitTestBehavior.opaque,
                                       onTap: () {
-                                        Get.toNamed(AppRoute.routerSignUp);
+                                        Get.toNamed(AppRoute.routerSignIn);
                                       },
-                                      child: const Text('Đăng ký ngay',
+                                      child: const Text('Đăng nhập ngay',
                                           style: TextStyle(
                                               decoration:
                                                   TextDecoration.underline))),

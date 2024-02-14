@@ -7,9 +7,10 @@ import 'package:grocery/routes/app_route.dart';
 class HomeController extends GetxController with SmartLoadListController {
   final RxList<ProductModel> listProducts = <ProductModel>[].obs;
   final RestClient restClient = RestClient();
+  int currenPage = 1;
   @override
   void onInit() async {
-    var list = await restClient.getListProducts(pageNumber: 2);
+    var list = await restClient.getListProducts(pageNumber: currenPage);
     listProducts.value = list.data ?? [];
     super.onInit();
   }
@@ -19,12 +20,20 @@ class HomeController extends GetxController with SmartLoadListController {
   }
 
   @override
-  void onLoading() {
-    // TODO: implement onLoading
+  void onLoading() async {
+    currenPage++;
+    var newList = await restClient.getListProducts(pageNumber: currenPage);
+    listProducts.addAll(newList.data ?? []);
+    refreshController.loadComplete();
   }
 
   @override
-  void onRefresh() {
-    // TODO: implement onRefresh
+  void onRefresh() async {
+    currenPage = 1;
+    listProducts.clear();
+    var list = await restClient.getListProducts(pageNumber: currenPage);
+    listProducts.value = list.data ?? [];
+
+    refreshController.refreshCompleted();
   }
 }

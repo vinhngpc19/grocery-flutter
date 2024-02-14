@@ -12,7 +12,7 @@ mixin SmartLoadListWidget {
         onLoading: controller.onLoading,
         onRefresh: controller.onRefresh,
         enablePullDown: enablePullDown ?? true,
-        enablePullUp: enablePullUp ?? false,
+        enablePullUp: enablePullUp ?? true,
         child: child,
       );
 }
