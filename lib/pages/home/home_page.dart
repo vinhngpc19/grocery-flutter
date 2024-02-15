@@ -87,7 +87,6 @@ class HomePage extends GetView<HomeController> with SmartLoadListWidget {
       child: DefaultTabController(
         length: 6,
         child: TabBar(
-            dividerColor: Colors.white,
             indicatorWeight: 2,
             indicatorColor: Colors.white,
             isScrollable: true,

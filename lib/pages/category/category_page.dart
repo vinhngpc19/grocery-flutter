@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:grocery/pages/home/category/category_controller.dart';
+import 'package:grocery/pages/category/category_controller.dart';
 import 'package:grocery/r.dart';
 import 'package:grocery/themes/app_theme.dart';
 
@@ -53,6 +53,7 @@ class CategoryPage extends GetView<CategoryController> {
 
   Widget _listCategory() {
     return ListView.builder(
+        shrinkWrap: true,
         itemCount: listCategoryUrl.length,
         physics: const AlwaysScrollableScrollPhysics(
             parent: BouncingScrollPhysics()),
@@ -89,20 +90,20 @@ class CategoryPage extends GetView<CategoryController> {
     return Container(
       height: 48,
       color: AppTheme.lightPrimaryColor,
-      alignment: Alignment.bottomCenter,
+      alignment: Alignment.topCenter,
       child: Padding(
-        padding: const EdgeInsets.only(left: 14, right: 14, bottom: 10),
+        padding: const EdgeInsets.only(left: 14, right: 14, bottom: 8),
         child: Row(
           children: [
             Expanded(
               child: Container(
                 decoration: const BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(5))),
-                height: 38,
+                    borderRadius: BorderRadius.all(Radius.circular(2))),
+                height: 40,
                 child: Row(children: [
                   const SizedBox(width: 8),
-                  const Icon(Icons.search, size: 26, color: Color(0xff868686)),
+                  const Icon(Icons.search, size: 28, color: Color(0xff868686)),
                   const SizedBox(width: 4),
                   Expanded(
                     child: Text('Tìm kiếm sản phẩm',
@@ -110,7 +111,7 @@ class CategoryPage extends GetView<CategoryController> {
                             TextStyle(fontSize: 14, color: AppTheme.greyIcon)),
                   ),
                   const Icon(Icons.camera_alt_outlined,
-                      size: 26, color: Color(0xff868686)),
+                      size: 28, color: Color(0xff868686)),
                   const SizedBox(width: 8),
                 ]),
               ),

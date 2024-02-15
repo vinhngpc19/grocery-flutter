@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:grocery/routes/app_route.dart';
 import 'package:grocery/themes/app_theme.dart';
 
 class SearchHomeWidget extends StatefulWidget {
@@ -20,34 +22,40 @@ class _SearchHomeWidgetState extends State<SearchHomeWidget> {
         child: Row(
           children: [
             Expanded(
-              child: Container(
-                margin: const EdgeInsets.only(left: 14),
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(5))),
-                height: 38,
-                child: Row(children: [
-                  const SizedBox(width: 8),
-                  const Icon(Icons.search, size: 26, color: Color(0xff868686)),
-                  const SizedBox(width: 4),
-                  Expanded(
-                    child: Text('Tìm kiếm sản phẩm',
-                        style:
-                            TextStyle(fontSize: 14, color: AppTheme.greyIcon)),
-                  ),
-                  const Icon(Icons.camera_alt_outlined,
-                      size: 26, color: Color(0xff868686)),
-                  const SizedBox(width: 8),
-                ]),
+              child: GestureDetector(
+                onTap: () {
+                  Get.toNamed(AppRoute.routerSearch);
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(left: 14),
+                  decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(2))),
+                  height: 40,
+                  child: Row(children: [
+                    const SizedBox(width: 6),
+                    const Icon(Icons.search,
+                        size: 28, color: Color(0xff868686)),
+                    const SizedBox(width: 2),
+                    Expanded(
+                      child: Text('Tìm kiếm sản phẩm',
+                          style: TextStyle(
+                              fontSize: 14, color: AppTheme.greyIcon)),
+                    ),
+                    const Icon(Icons.camera_alt_outlined,
+                        size: 28, color: Color(0xff868686)),
+                    const SizedBox(width: 6),
+                  ]),
+                ),
               ),
             ),
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 12),
+              padding: EdgeInsets.symmetric(horizontal: 10),
               child: Icon(Icons.notifications_none_outlined,
                   size: 28, color: Colors.white),
             ),
             const Padding(
-              padding: EdgeInsets.only(right: 14),
+              padding: EdgeInsets.only(right: 12),
               child: Icon(Icons.shopping_cart_outlined,
                   size: 28, color: Colors.white),
             ),

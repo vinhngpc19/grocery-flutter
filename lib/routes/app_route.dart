@@ -1,6 +1,6 @@
 import 'package:get/route_manager.dart';
+import 'package:grocery/pages/category/category_page.dart';
 import 'package:grocery/pages/dashboard/dashboard_page.dart';
-import 'package:grocery/pages/home/category/category_page.dart';
 import 'package:grocery/pages/home/home_page.dart';
 import 'package:grocery/pages/product_detail/product_detail_page.dart';
 import 'package:grocery/pages/profile/profile_page.dart';

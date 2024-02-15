@@ -4,7 +4,8 @@ class DashboardController extends GetxController {
   RxInt currentIndex = 0.obs;
 
   void onTapIndex(int index) {
-    currentIndex.value = index;
-    if (index == 2) {}
+    if (index != 2 && index != 3) {
+      currentIndex.value = index;
+    }
   }
 }

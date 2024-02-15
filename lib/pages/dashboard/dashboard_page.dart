@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:grocery/pages/category/category_page.dart';
 import 'package:grocery/pages/dashboard/dashboard_controller.dart';
-import 'package:grocery/pages/home/category/category_page.dart';
 import 'package:grocery/pages/home/home_page.dart';
 import 'package:grocery/pages/profile/profile_page.dart';
 import 'package:grocery/themes/app_theme.dart';

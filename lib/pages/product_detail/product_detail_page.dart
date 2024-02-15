@@ -19,7 +19,7 @@ class ProductDetailPage extends GetView<ProductDetailController> {
           () => Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _seachWidget(),
+              _searchWidget(),
               Expanded(
                   child: SingleChildScrollView(
                 physics: const AlwaysScrollableScrollPhysics(
@@ -199,7 +199,7 @@ class ProductDetailPage extends GetView<ProductDetailController> {
     );
   }
 
-  Widget _seachWidget() {
+  Widget _searchWidget() {
     return Container(
       height: 50,
       color: Colors.white,
