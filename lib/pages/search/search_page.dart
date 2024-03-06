@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grocery/pages/search/search_controller.dart';
 import 'package:grocery/themes/app_theme.dart';
+import 'package:grocery/themes/text_theme.dart';
 
 class SearchPage extends GetView<SearchController> {
   SearchPage({super.key});
@@ -44,20 +45,22 @@ class SearchPage extends GetView<SearchController> {
       decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(2))),
-      height: 40,
+      height: 38,
       margin: const EdgeInsets.only(right: 20, left: 4),
       child: TextFormField(
+        style: MyTextStyle.textStyle(style: const TextStyle()),
         focusNode: controller.focusNode,
-        cursorColor: Colors.blue[600],
+        cursorColor: Color.fromARGB(255, 33, 133, 220),
         decoration: InputDecoration(
           hintText: 'Tìm kiếm sản phẩm',
-          hintStyle: TextStyle(color: AppTheme.greyIcon),
+          hintStyle:
+              MyTextStyle.textStyle(style: TextStyle(color: AppTheme.greyIcon)),
           focusedBorder: InputBorder.none,
           border: InputBorder.none,
           contentPadding:
-              const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+              const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
           prefixIcon:
-              const Icon(Icons.search, size: 26, color: Color(0xff868686)),
+              const Icon(Icons.search, size: 24, color: Color(0xff868686)),
         ),
       ),
     );

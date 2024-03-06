@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:grocery/themes/text_theme.dart';
 
 class AppTheme {
   static Color lightBackgroundColor = const Color(0xfff2f2f2);
@@ -17,8 +20,14 @@ class AppTheme {
   static final lightTheme = ThemeData(
       brightness: Brightness.light,
       primaryColor: lightPrimaryColor,
+      primaryColorLight: Colors.blue,
+      primaryColorDark: Colors.blue,
       visualDensity: VisualDensity.adaptivePlatformDensity,
       appBarTheme: AppBarTheme(backgroundColor: lightPrimaryColor),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          selectedLabelStyle: MyTextStyle.textStyle(style: const TextStyle()),
+          unselectedLabelStyle:
+              MyTextStyle.textStyle(style: const TextStyle())),
       textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(foregroundColor: lightBackgroundColor)),
       colorScheme: ColorScheme.light(secondary: lightSecondaryColor)
@@ -30,9 +39,9 @@ class AppTheme {
 
   static setStatusBarAndNavigationBarColors(ThemeMode themeMode) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light,
-      systemNavigationBarIconBrightness: Brightness.light,
+      statusBarColor: Colors.white,
+      statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarIconBrightness: Brightness.dark,
       systemNavigationBarColor: lightBackgroundColor,
       systemNavigationBarDividerColor: Colors.transparent,
     ));

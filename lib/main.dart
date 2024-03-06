@@ -3,11 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
 import 'package:grocery/routes/app_route.dart';
 import 'package:grocery/themes/app_theme.dart';
+import 'package:grocery/themes/app_theme.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 void main() {
+  AppTheme.setStatusBarAndNavigationBarColors(ThemeMode.dark);
   // change status appbar status color(time, baterry ...)
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+  // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+
   runApp(const MyApp());
 }
 
@@ -17,8 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // set appbar status color
-    SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: AppTheme.lightPrimaryColor));
+
     return RefreshConfiguration(
       maxOverScrollExtent:
           100, //The maximum dragging range of the head. Set this property if a rush out of the view area occurs

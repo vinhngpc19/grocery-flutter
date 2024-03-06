@@ -5,6 +5,7 @@ import 'package:grocery/component/custom_input_text.dart';
 import 'package:grocery/component/custom_login_fb_gg.dart';
 import 'package:grocery/pages/sign_up/sign_up_controller.dart';
 import 'package:grocery/routes/app_route.dart';
+import 'package:grocery/themes/text_theme.dart';
 
 class SignUpPage extends GetView<SignUpController> {
   SignUpPage({super.key});
@@ -17,7 +18,9 @@ class SignUpPage extends GetView<SignUpController> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-          child: Padding(
+          child: Stack(
+        children: [
+          Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: LayoutBuilder(builder:
                   (BuildContext context, BoxConstraints viewportConstraints) {
@@ -32,27 +35,36 @@ class SignUpPage extends GetView<SignUpController> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text('Tạo tài khoản mới',
-                              style: TextStyle(
-                                  fontSize: 24, fontStyle: FontStyle.italic)),
+                          Text('Tạo tài khoản mới',
+                              style: MyTextStyle.textStyle(
+                                  style: TextStyle(
+                                      fontSize: 24,
+                                      fontStyle: FontStyle.italic))),
                           const SizedBox(height: 30),
-                          const CustomInputText(hintText: 'Nhập tên tài khoản'),
+                          CustomInputText(
+                              hintText: 'Nhập tên tài khoản',
+                              inputController: controller.usernameController),
                           const SizedBox(height: 10),
-                          const CustomInputText(hintText: 'Nhập địa chỉ Email'),
+                          CustomInputText(
+                              hintText: 'Nhập địa chỉ Email',
+                              inputController: controller.emailController),
                           const SizedBox(height: 10),
-                          const CustomInputText(
+                          CustomInputText(
                               hintText: 'Nhập mật khẩu',
                               type: TextInputType.visiblePassword,
-                              isPassword: true),
+                              isPassword: true,
+                              inputController: controller.passwordController),
                           const SizedBox(height: 10),
-                          const CustomInputText(
-                              hintText: 'Xác nhận mật khẩu',
-                              type: TextInputType.visiblePassword,
-                              isPassword: true),
+                          CustomInputText(
+                            hintText: 'Xác nhận mật khẩu',
+                            type: TextInputType.visiblePassword,
+                            isPassword: true,
+                            inputController: TextEditingController(),
+                          ),
                           const SizedBox(height: 30),
                           CustomButton(
                             title: 'Đăng ký',
-                            onTap: () {},
+                            onTap: controller.handleSignUp,
                           ),
                           const SizedBox(height: 30),
                           const CustomLoginFbGg(title: 'Hoặc đăng nhập bằng'),
@@ -60,17 +72,22 @@ class SignUpPage extends GetView<SignUpController> {
                           Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text('Bạn đã có tài khoản? '),
+                                Text(
+                                  'Bạn đã có tài khoản? ',
+                                  style:
+                                      MyTextStyle.textStyle(style: TextStyle()),
+                                ),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 6),
                                   child: GestureDetector(
                                       onTap: () {
                                         Get.toNamed(AppRoute.routerSignIn);
                                       },
-                                      child: const Text('Đăng nhập ngay',
-                                          style: TextStyle(
-                                              decoration:
-                                                  TextDecoration.underline))),
+                                      child: Text('Đăng nhập ngay',
+                                          style: MyTextStyle.textStyle(
+                                              style: TextStyle(
+                                                  decoration: TextDecoration
+                                                      .underline)))),
                                 )
                               ])
                         ],
@@ -78,7 +95,17 @@ class SignUpPage extends GetView<SignUpController> {
                     ),
                   ),
                 );
-              }))),
+              })),
+          Positioned(
+              top: 12,
+              left: 12,
+              child: GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: const Icon(Icons.arrow_back, size: 28))),
+        ],
+      )),
     );
   }
 }

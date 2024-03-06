@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocery/r.dart';
+import 'package:grocery/themes/text_theme.dart';
 
 class CustomLoginFbGg extends StatelessWidget {
   const CustomLoginFbGg({super.key, required this.title});
@@ -8,7 +9,7 @@ class CustomLoginFbGg extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(title),
+        Text(title, style: MyTextStyle.textStyle(style: TextStyle())),
         const SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

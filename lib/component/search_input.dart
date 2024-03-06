@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:grocery/routes/app_route.dart';
 import 'package:grocery/themes/app_theme.dart';
+import 'package:grocery/themes/text_theme.dart';
 
 class SearchInputWidget extends StatefulWidget {
   const SearchInputWidget({super.key});
@@ -32,8 +35,9 @@ class _SearchInputWidgetState extends State<SearchInputWidget> {
                   const SizedBox(width: 4),
                   Expanded(
                     child: Text('Tìm kiếm sản phẩm',
-                        style:
-                            TextStyle(fontSize: 14, color: AppTheme.greyIcon)),
+                        style: MyTextStyle.textStyle(
+                            style: TextStyle(
+                                fontSize: 14, color: AppTheme.greyIcon))),
                   ),
                   const Icon(Icons.camera_alt_outlined,
                       size: 26, color: Color(0xff868686)),
@@ -46,10 +50,13 @@ class _SearchInputWidgetState extends State<SearchInputWidget> {
               child: Icon(Icons.notifications_none_outlined,
                   size: 28, color: Colors.white),
             ),
-            const Padding(
-              padding: EdgeInsets.only(right: 14),
-              child: Icon(Icons.shopping_cart_outlined,
-                  size: 28, color: Colors.white),
+            Padding(
+              padding: const EdgeInsets.only(right: 14),
+              child: GestureDetector(
+                behavior: HitTestBehavior.translucent,
+                child: const Icon(Icons.shopping_cart_outlined,
+                    size: 28, color: Colors.white),
+              ),
             ),
           ],
         ),

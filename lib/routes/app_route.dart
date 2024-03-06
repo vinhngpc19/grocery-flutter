@@ -1,4 +1,5 @@
 import 'package:get/route_manager.dart';
+import 'package:grocery/pages/cart/cart_page.dart';
 import 'package:grocery/pages/category/category_page.dart';
 import 'package:grocery/pages/dashboard/dashboard_page.dart';
 import 'package:grocery/pages/home/home_page.dart';
@@ -17,6 +18,8 @@ class AppRoute {
   static const String routerSearch = '/search';
   static const String routerDetail = '/detail';
   static const String routerCategory = '/category';
+  static const String routerCart = '/cart';
+
   static List<GetPage> pages = [
     GetPage(name: routerDashboard, page: () => DashboardPage()),
     GetPage(name: routerHome, page: () => HomePage()),
@@ -26,5 +29,6 @@ class AppRoute {
     GetPage(name: routerSignUp, page: () => SignUpPage()),
     GetPage(name: routerDetail, page: () => ProductDetailPage()),
     GetPage(name: routerCategory, page: () => CategoryPage()),
+    GetPage(name: routerCart, page: () => CartPage()),
   ];
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grocery/models/product_model.dart';
 import 'package:grocery/themes/app_theme.dart';
+import 'package:grocery/themes/text_theme.dart';
 import 'package:intl/intl.dart';
 
 class ProductItem extends StatelessWidget {
@@ -40,18 +41,22 @@ class ProductItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(productModel.name ?? '-',
-                      style: const TextStyle(overflow: TextOverflow.ellipsis),
+                      style: MyTextStyle.textStyle(
+                          style:
+                              const TextStyle(overflow: TextOverflow.ellipsis)),
                       maxLines: 2),
                   const SizedBox(height: 6),
                   Text(
-                      (productModel.currentPrice != null)
-                          ? NumberFormat.simpleCurrency(name: 'VND')
-                              .format(int.tryParse(productModel.currentPrice!))
-                          : '-',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: AppTheme.lightPrimaryColor)),
+                    (productModel.currentPrice != null)
+                        ? NumberFormat.simpleCurrency(name: 'VND')
+                            .format(int.tryParse(productModel.currentPrice!))
+                        : '-',
+                    style: MyTextStyle.textStyle(
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: AppTheme.lightPrimaryColor)),
+                  ),
                   const SizedBox(height: 2),
                   Container(
                     decoration: BoxDecoration(
@@ -64,28 +69,34 @@ class ProductItem extends StatelessWidget {
                         children: [
                           Icon(Icons.monetization_on_sharp,
                               color: Colors.orange[700], size: 12),
-                          const Text('Mua trước chả sau',
-                              style:
-                                  TextStyle(fontSize: 10, color: Colors.orange))
+                          Text('Mua trước chả sau',
+                              style: MyTextStyle.textStyle(
+                                  style: const TextStyle(
+                                      fontSize: 10, color: Colors.orange)))
                         ],
                       ),
                     ),
                   ),
                   const SizedBox(height: 4),
                   Text('Số lượng ${productModel.quantity}',
-                      style: const TextStyle(fontSize: 11)),
+                      style: MyTextStyle.textStyle(
+                          style: const TextStyle(fontSize: 11))),
                   const SizedBox(height: 2),
                   Row(
                     children: [
                       Expanded(
                         child: Row(
                           children: [
-                            const Text('5/5', style: TextStyle(fontSize: 11)),
+                            Text('5/5',
+                                style: MyTextStyle.textStyle(
+                                    style: const TextStyle(fontSize: 11))),
                             Icon(Icons.star, color: Colors.amber[400], size: 11)
                           ],
                         ),
                       ),
-                      const Text('Hà Nội', style: TextStyle(fontSize: 11))
+                      Text('Hà Nội',
+                          style: MyTextStyle.textStyle(
+                              style: const TextStyle(fontSize: 11))),
                     ],
                   ),
                 ],

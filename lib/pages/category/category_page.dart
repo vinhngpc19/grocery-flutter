@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:grocery/pages/category/category_controller.dart';
 import 'package:grocery/r.dart';
 import 'package:grocery/themes/app_theme.dart';
+import 'package:grocery/themes/text_theme.dart';
 
 class CategoryPage extends GetView<CategoryController> {
   CategoryPage({super.key});
@@ -30,8 +31,11 @@ class CategoryPage extends GetView<CategoryController> {
         preferredSize: const Size.fromHeight(100),
         child: AppBar(
           backgroundColor: AppTheme.lightPrimaryColor,
-          title: const Center(
-              child: Text('Tất cả danh mục', style: TextStyle(fontSize: 18))),
+          automaticallyImplyLeading: false,
+          title: Center(
+              child: Text('Tất cả danh mục',
+                  style: MyTextStyle.textStyle(
+                      style: const TextStyle(fontSize: 18)))),
           bottom: PreferredSize(
               preferredSize: const Size.fromHeight(80),
               child: _searchCategory()),
@@ -74,10 +78,11 @@ class CategoryPage extends GetView<CategoryController> {
               left: 10,
               top: 6,
               child: Text(categoryName,
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontStyle: FontStyle.italic)),
+                  style: MyTextStyle.textStyle(
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontStyle: FontStyle.italic))),
             )
           ],
         ),
@@ -100,18 +105,19 @@ class CategoryPage extends GetView<CategoryController> {
                 decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(Radius.circular(2))),
-                height: 40,
+                height: 38,
                 child: Row(children: [
                   const SizedBox(width: 8),
-                  const Icon(Icons.search, size: 28, color: Color(0xff868686)),
+                  const Icon(Icons.search, size: 24, color: Color(0xff868686)),
                   const SizedBox(width: 4),
                   Expanded(
                     child: Text('Tìm kiếm sản phẩm',
-                        style:
-                            TextStyle(fontSize: 14, color: AppTheme.greyIcon)),
+                        style: MyTextStyle.textStyle(
+                            style: TextStyle(
+                                fontSize: 14, color: AppTheme.greyIcon))),
                   ),
                   const Icon(Icons.camera_alt_outlined,
-                      size: 28, color: Color(0xff868686)),
+                      size: 24, color: Color(0xff868686)),
                   const SizedBox(width: 8),
                 ]),
               ),

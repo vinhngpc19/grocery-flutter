@@ -5,6 +5,7 @@ import 'package:grocery/component/custom_input_text.dart';
 import 'package:grocery/component/custom_login_fb_gg.dart';
 import 'package:grocery/pages/sign_in/sign_in_controller.dart';
 import 'package:grocery/routes/app_route.dart';
+import 'package:grocery/themes/text_theme.dart';
 
 class SignInPage extends GetView<SignInController> {
   @override
@@ -31,34 +32,40 @@ class SignInPage extends GetView<SignInController> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text('Đăng nhập tài khoản',
-                              style: TextStyle(
-                                  fontSize: 24, fontStyle: FontStyle.italic)),
+                          Text('Đăng nhập tài khoản',
+                              style: MyTextStyle.textStyle(
+                                  style: TextStyle(
+                                      fontSize: 24,
+                                      fontStyle: FontStyle.italic))),
                           const SizedBox(height: 30),
-                          const CustomInputText(hintText: 'Nhập địa chỉ Email'),
+                          CustomInputText(
+                              hintText: 'Nhập địa chỉ Email',
+                              inputController: controller.emailController),
                           const SizedBox(height: 10),
-                          const CustomInputText(
+                          CustomInputText(
                               hintText: 'Nhập mật khẩu',
                               type: TextInputType.visiblePassword,
-                              isPassword: true),
+                              isPassword: true,
+                              inputController: controller.passWordController),
                           Padding(
                             padding: const EdgeInsets.only(top: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Text('Quên mật khẩu',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontStyle: FontStyle.italic,
-                                        color: const Color(0xff000000)
-                                            .withOpacity(0.6))),
+                                    style: MyTextStyle.textStyle(
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontStyle: FontStyle.italic,
+                                            color: const Color(0xff000000)
+                                                .withOpacity(0.6)))),
                               ],
                             ),
                           ),
                           const SizedBox(height: 30),
                           CustomButton(
                             title: 'Đăng nhập',
-                            onTap: () {},
+                            onTap: controller.handleSignIn,
                           ),
                           const SizedBox(height: 30),
                           const CustomLoginFbGg(title: 'Hoặc đăng nhập bằng'),
@@ -66,7 +73,11 @@ class SignInPage extends GetView<SignInController> {
                           Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text('Bạn chưa có tài khoản?'),
+                                Text(
+                                  'Bạn chưa có tài khoản?',
+                                  style:
+                                      MyTextStyle.textStyle(style: TextStyle()),
+                                ),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 6),
                                   child: GestureDetector(
@@ -74,10 +85,11 @@ class SignInPage extends GetView<SignInController> {
                                       onTap: () {
                                         Get.toNamed(AppRoute.routerSignUp);
                                       },
-                                      child: const Text('Đăng ký ngay',
-                                          style: TextStyle(
-                                              decoration:
-                                                  TextDecoration.underline))),
+                                      child: Text('Đăng ký ngay',
+                                          style: MyTextStyle.textStyle(
+                                              style: TextStyle(
+                                                  decoration: TextDecoration
+                                                      .underline)))),
                                 )
                               ])
                         ],

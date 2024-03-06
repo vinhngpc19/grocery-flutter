@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:grocery/component/smart_scroll/smart_load_list_controller.dart';
 import 'package:grocery/models/product_model.dart';
-import 'package:grocery/remote_config/api_manager/rest_client.dart';
+import 'package:grocery/api_manager/rest_client.dart';
 import 'package:grocery/routes/app_route.dart';
 
 class HomeController extends GetxController with SmartLoadListController {

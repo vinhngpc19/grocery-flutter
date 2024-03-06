@@ -5,6 +5,7 @@ import 'package:grocery/pages/home/component/product_item.dart';
 import 'package:grocery/component/search_home_item.dart';
 import 'package:grocery/r.dart';
 import 'package:grocery/themes/app_theme.dart';
+import 'package:grocery/themes/text_theme.dart';
 
 import 'home_controller.dart';
 
@@ -17,30 +18,28 @@ class HomePage extends GetView<HomeController> with SmartLoadListWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppTheme.grey,
-      body: SafeArea(
-        child: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints viewportConstraints) {
-            return SingleChildScrollView(
-              physics: const NeverScrollableScrollPhysics(),
-              child: SizedBox(
-                height: Get.height -
-                    MediaQuery.of(context).viewPadding.top -
-                    MediaQuery.of(context).viewPadding.bottom -
-                    kToolbarHeight -
-                    22,
-                width: Get.width,
-                child: IntrinsicHeight(
-                  child: Column(
-                    children: <Widget>[
-                      const SearchHomeWidget(),
-                      Expanded(child: _gridProductsWidget())
-                    ],
-                  ),
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints viewportConstraints) {
+          return SingleChildScrollView(
+            physics: const NeverScrollableScrollPhysics(),
+            child: SizedBox(
+              height: Get.height -
+                  MediaQuery.of(context).viewPadding.top -
+                  MediaQuery.of(context).viewPadding.bottom -
+                  kToolbarHeight -
+                  22,
+              width: Get.width,
+              child: IntrinsicHeight(
+                child: Column(
+                  children: <Widget>[
+                    const SearchHomeWidget(),
+                    Expanded(child: _gridProductsWidget())
+                  ],
                 ),
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -62,7 +61,7 @@ class HomePage extends GetView<HomeController> with SmartLoadListWidget {
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
                     crossAxisCount: 2,
-                    mainAxisExtent: 270,
+                    mainAxisExtent: 285,
                   ),
                   itemCount: controller.listProducts.length,
                   shrinkWrap: true,
@@ -90,8 +89,10 @@ class HomePage extends GetView<HomeController> with SmartLoadListWidget {
             indicatorWeight: 2,
             indicatorColor: Colors.white,
             isScrollable: true,
-            labelStyle: const TextStyle(fontWeight: FontWeight.bold),
-            unselectedLabelStyle: TextStyle(color: AppTheme.grey),
+            labelStyle: MyTextStyle.textStyle(
+                style: const TextStyle(fontWeight: FontWeight.bold)),
+            unselectedLabelStyle:
+                MyTextStyle.textStyle(style: TextStyle(color: AppTheme.grey)),
             tabs: const [
               Tab(
                 text: 'Cho bạn',
