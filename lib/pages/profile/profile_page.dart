@@ -44,7 +44,7 @@ class ProfilePage extends GetView<ProfileController> {
               _def(),
               GestureDetector(
                 onTap: () {
-                  Get.toNamed(AppRoute.routerSignIn);
+                  controller.signout();
                 },
                 child: Container(
                   width: 350,

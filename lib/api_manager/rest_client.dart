@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:grocery/models/product_model.dart';
 import 'package:grocery/routes/app_route.dart';
 
-const String baseUrl = 'http://192.168.1.56:3000/';
+const String baseUrl = 'http://192.168.1.58:3000/';
 
 class RestClient {
   final dio = Dio();

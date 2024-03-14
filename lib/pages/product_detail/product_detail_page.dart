@@ -186,39 +186,39 @@ class ProductDetailPage extends GetView<ProductDetailController> {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        const SizedBox(width: 14),
-                        Image.network(
-                          controller.productItem.value.imgUrl!,
-                          height: 140,
-                          fit: BoxFit.fitHeight,
-                        ),
-                        const SizedBox(width: 10),
-                        Column(
+                    Obx(() => Row(
                           children: [
-                            if (controller.productItem.value.currentPrice !=
-                                null)
-                              Text(
-                                  NumberFormat.simpleCurrency(name: 'VND')
-                                      .format(int.tryParse(controller
-                                          .productItem.value.currentPrice!)),
-                                  style: MyTextStyle.textStyle(
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  )),
-                            Text(
-                                'Kho: ${controller.productItem.value.quantity}',
-                                style: MyTextStyle.textStyle(
-                                    style: const TextStyle(
-                                  fontSize: 15,
-                                ))),
+                            const SizedBox(width: 14),
+                            Image.network(
+                              controller.productItem.value.imgUrl!,
+                              height: 140,
+                              fit: BoxFit.fitHeight,
+                            ),
+                            const SizedBox(width: 10),
+                            Column(
+                              children: [
+                                if (controller.productItem.value.totalPrice !=
+                                    null)
+                                  Text(
+                                      NumberFormat.simpleCurrency(name: 'VND')
+                                          .format(int.tryParse(
+                                              controller.totalPrice.value)),
+                                      style: MyTextStyle.textStyle(
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      )),
+                                Text(
+                                    'Kho: ${controller.productItem.value.quantity}',
+                                    style: MyTextStyle.textStyle(
+                                        style: const TextStyle(
+                                      fontSize: 15,
+                                    ))),
+                              ],
+                            ),
                           ],
-                        ),
-                      ],
-                    ),
+                        )),
                     const SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -238,19 +238,25 @@ class ProductDetailPage extends GetView<ProductDetailController> {
                     const SizedBox(height: 18),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 14),
-                      child: Container(
-                          height: 44,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                              color: AppTheme.lightPrimaryColor,
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(5))),
-                          child: Text(title,
-                              style: MyTextStyle.textStyle(
-                                  style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500)))),
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () {
+                          controller.handleAddCart();
+                        },
+                        child: Container(
+                            height: 44,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                                color: AppTheme.lightPrimaryColor,
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(5))),
+                            child: Text(title,
+                                style: MyTextStyle.textStyle(
+                                    style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500)))),
+                      ),
                     ),
                   ],
                 ),
