@@ -42,6 +42,7 @@ class ProductDetailController extends GetxController {
   }
 
   void handleAddCart() {
+    bool isNew = false;
     productItem.value.quantityCart = quantityNumber.value;
     productItem.value.totalPrice = totalPrice.value;
 
@@ -50,13 +51,13 @@ class ProductDetailController extends GetxController {
       if (tempList[i].id == productId) {
         Get.find<DashboardController>().listCart.value[i].quantityCart +=
             quantityNumber.value;
+        isNew = false;
         break;
       } else {
-        Get.find<DashboardController>().listCart.add(productItem.value);
-        break;
+        isNew = true;
       }
     }
-    if (tempList.isEmpty) {
+    if (tempList.isEmpty || isNew) {
       Get.find<DashboardController>().listCart.add(productItem.value);
     }
 

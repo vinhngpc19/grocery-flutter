@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:grocery/pages/dashboard/dashboard_controller.dart';
 import 'package:grocery/routes/app_route.dart';
 import 'package:grocery/themes/app_theme.dart';
 import 'package:grocery/themes/text_theme.dart';
 
-class SearchHomeWidget extends StatefulWidget {
+class SearchHomeWidget extends GetView<DashboardController> {
   const SearchHomeWidget({super.key});
 
-  @override
-  State<SearchHomeWidget> createState() => _SearchHomeWidgetState();
-}
-
-class _SearchHomeWidgetState extends State<SearchHomeWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -57,13 +53,41 @@ class _SearchHomeWidgetState extends State<SearchHomeWidget> {
                   Icon(Icons.shopify_outlined, size: 30, color: Colors.white),
             ),
             GestureDetector(
+              behavior: HitTestBehavior.opaque,
               onTap: () {
                 Get.toNamed(AppRoute.routerCart);
               },
-              child: const Padding(
-                padding: EdgeInsets.only(right: 12),
-                child: Icon(Icons.shopping_cart_outlined,
-                    size: 28, color: Colors.white),
+              child: Obx(
+                () => Stack(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(right: 12),
+                      child: Icon(Icons.shopping_cart_outlined,
+                          size: 28, color: Colors.white),
+                    ),
+                    if (controller.listCart.value.isNotEmpty)
+                      Positioned(
+                        right: 10,
+                        child: Container(
+                          width: 16,
+                          height: 16,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                          child: Center(
+                            child: Text(
+                              controller.listCart.value.length.toString(),
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  color: AppTheme.lightPrimaryColor,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
               ),
             ),
           ],

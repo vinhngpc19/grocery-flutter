@@ -15,7 +15,7 @@ class Product {
 }
 
 class MyPaymentPage extends StatefulWidget {
-  const MyPaymentPage({Key? key});
+  const MyPaymentPage({super.key});
   @override
   _MyPaymentPageState createState() => _MyPaymentPageState();
 }

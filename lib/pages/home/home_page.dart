@@ -32,7 +32,7 @@ class HomePage extends GetView<HomeController> with SmartLoadListWidget {
               child: IntrinsicHeight(
                 child: Column(
                   children: <Widget>[
-                    const SearchHomeWidget(),
+                    Obx(() => SearchHomeWidget()),
                     Expanded(child: _gridProductsWidget())
                   ],
                 ),
