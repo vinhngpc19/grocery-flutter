@@ -27,6 +27,7 @@ class CategoryPage extends GetView<CategoryController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(100),
         child: AppBar(
@@ -35,7 +36,8 @@ class CategoryPage extends GetView<CategoryController> {
           title: Center(
               child: Text('Tất cả danh mục',
                   style: MyTextStyle.textStyle(
-                      style: const TextStyle(fontSize: 18)))),
+                      style:
+                          const TextStyle(fontSize: 18, color: Colors.white)))),
           bottom: PreferredSize(
               preferredSize: const Size.fromHeight(80),
               child: _searchCategory()),
@@ -62,8 +64,13 @@ class CategoryPage extends GetView<CategoryController> {
         physics: const AlwaysScrollableScrollPhysics(
             parent: BouncingScrollPhysics()),
         itemBuilder: (_, index) {
-          return _buildCategoryItem(
-              listCategoryUrl[index], listCategoryName[index]);
+          return GestureDetector(
+            onTap: () {
+              controller.onTapItem(index);
+            },
+            child: _buildCategoryItem(
+                listCategoryUrl[index], listCategoryName[index]),
+          );
         });
   }
 
@@ -79,10 +86,8 @@ class CategoryPage extends GetView<CategoryController> {
               top: 6,
               child: Text(categoryName,
                   style: MyTextStyle.textStyle(
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontStyle: FontStyle.italic))),
+                      style:
+                          const TextStyle(color: Colors.white, fontSize: 16))),
             )
           ],
         ),

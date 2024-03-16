@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grocery/pages/profile/profile_controller.dart';
-import 'package:grocery/routes/app_route.dart';
 import 'package:grocery/themes/app_theme.dart';
 import 'package:grocery/themes/text_theme.dart';
 
@@ -31,7 +30,8 @@ class ProfilePage extends GetView<ProfileController> {
         title: Center(
             child: Text('Cá nhân',
                 style: MyTextStyle.textStyle(
-                    style: TextStyle(fontSize: 18, color: Colors.white)))),
+                    style:
+                        const TextStyle(fontSize: 18, color: Colors.white)))),
       ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -61,7 +61,8 @@ class ProfilePage extends GetView<ProfileController> {
                   child: Center(
                       child: Text('Đăng xuất',
                           style: MyTextStyle.textStyle(
-                              style: TextStyle(fontWeight: FontWeight.w500)))),
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.w500)))),
                 ),
               )
             ],
@@ -115,7 +116,7 @@ class ProfilePage extends GetView<ProfileController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "autobot",
+                    controller.username.value,
                     style: MyTextStyle.textStyle(
                         style: TextStyle(fontWeight: FontWeight.w600)),
                   ),
@@ -162,15 +163,15 @@ class ProfilePage extends GetView<ProfileController> {
                     children: [
                       Text('6',
                           style: MyTextStyle.textStyle(
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 15,
                                 color: Colors.black,
                                 fontWeight: FontWeight.w800),
                           )),
                       Text(textview[index],
                           style: MyTextStyle.textStyle(
-                            style:
-                                TextStyle(fontSize: 15, color: Colors.black54),
+                            style: const TextStyle(
+                                fontSize: 15, color: Colors.black54),
                           )),
                     ],
                   ),
@@ -213,7 +214,7 @@ class ProfilePage extends GetView<ProfileController> {
                         ),
                         Text(text2[index],
                             style: MyTextStyle.textStyle(
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 14,
                                     color: Colors.black,
                                     fontWeight: FontWeight.w400))),

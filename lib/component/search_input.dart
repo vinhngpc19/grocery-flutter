@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:grocery/routes/app_route.dart';
 import 'package:grocery/themes/app_theme.dart';
 import 'package:grocery/themes/text_theme.dart';
 

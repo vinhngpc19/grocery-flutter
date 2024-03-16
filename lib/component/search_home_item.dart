@@ -57,37 +57,38 @@ class SearchHomeWidget extends GetView<DashboardController> {
               onTap: () {
                 Get.toNamed(AppRoute.routerCart);
               },
-              child: Obx(
-                () => Stack(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(right: 12),
-                      child: Icon(Icons.shopping_cart_outlined,
-                          size: 28, color: Colors.white),
-                    ),
-                    if (controller.listCart.value.isNotEmpty)
-                      Positioned(
+              child: Stack(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(right: 12),
+                    child: Icon(Icons.shopping_cart_outlined,
+                        size: 28, color: Colors.white),
+                  ),
+                  Obx(
+                    () => Visibility(
+                      visible: controller.listCart.isNotEmpty,
+                      child: Positioned(
                         right: 10,
                         child: Container(
-                          width: 16,
-                          height: 16,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          child: Center(
-                            child: Text(
-                              controller.listCart.value.length.toString(),
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  color: AppTheme.lightPrimaryColor,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                        ),
+                            width: 16,
+                            height: 16,
+                            decoration: const BoxDecoration(
+                                color: Colors.white,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20))),
+                            child: Center(
+                              child: Text(
+                                controller.listCart.length.toString(),
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    color: AppTheme.lightPrimaryColor,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            )),
                       ),
-                  ],
-                ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

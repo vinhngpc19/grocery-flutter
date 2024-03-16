@@ -21,11 +21,6 @@ class MyPaymentPage extends StatefulWidget {
 }
 
 class _MyPaymentPageState extends State<MyPaymentPage> {
-  final List<Product> _items = [
-    Product(name: 'Chuối 400gr', price: 5.0, imageUrl: 'assets/banana.jpg'),
-    Product(name: 'Thịt bò 500gr', price: 15.0, imageUrl: 'assets/beef.jpg'),
-    Product(name: 'Táo 200gr', price: 2.5, imageUrl: 'assets/apple.jpg'),
-  ];
   List<ProductModel> listCarts = [];
 
   int _totalPrice = 0;
@@ -47,7 +42,6 @@ class _MyPaymentPageState extends State<MyPaymentPage> {
     for (ProductModel item in listCarts) {
       var total = int.tryParse(item.totalPrice!)! * item.quantityCart;
       totalPrice = totalPrice + total;
-      print(totalPrice);
     }
     setState(() {
       _totalPrice = totalPrice;
@@ -102,9 +96,9 @@ class _MyPaymentPageState extends State<MyPaymentPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         'Autobot1 - 0123456789',
-                        style: const TextStyle(
+                        style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w500),
                       ),
                       TextButton(
@@ -165,9 +159,9 @@ class _MyPaymentPageState extends State<MyPaymentPage> {
                       ),
                     ],
                   ),
-                  Text(
+                  const Text(
                     'Địa chỉ: Tố Hữu, P.Yên Nghĩa, Q.Hà Đông, Hà Nội',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
@@ -193,11 +187,11 @@ class _MyPaymentPageState extends State<MyPaymentPage> {
                     itemBuilder: (context, index) =>
                         CartItem(productModel: listCarts[index]))),
 
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   SizedBox(height: 10),
                   Text(
                     'THANH TOÁN',
@@ -233,16 +227,16 @@ class _MyPaymentPageState extends State<MyPaymentPage> {
                   const SizedBox(height: 5),
                   Row(
                     children: [
-                      Text(
+                      const Text(
                         'Tiền hàng: ',
-                        style: const TextStyle(
+                        style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w600),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Text(
                         NumberFormat.simpleCurrency(name: 'VND')
                             .format(_totalPrice),
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
                             color: Colors.black),
@@ -250,11 +244,11 @@ class _MyPaymentPageState extends State<MyPaymentPage> {
                     ],
                   ),
                   const SizedBox(height: 5),
-                  Row(
+                  const Row(
                     children: [
                       Text(
                         'Phí giao hàng: ',
-                        style: const TextStyle(
+                        style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w600),
                       ),
                       Spacer(),
@@ -287,10 +281,13 @@ class _MyPaymentPageState extends State<MyPaymentPage> {
                       //
                     },
                     style: ElevatedButton.styleFrom(
-                        primary: AppTheme.lightPrimaryColor),
+                        backgroundColor: AppTheme.lightPrimaryColor,
+                        shape: const BeveledRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(2))),
+                        foregroundColor: Colors.white),
                     child: const Text(
                       'Thanh toán',
-                      style: TextStyle(fontSize: 18),
+                      style: TextStyle(fontSize: 16),
                     ),
                   ),
                 ],

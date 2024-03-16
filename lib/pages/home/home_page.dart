@@ -32,7 +32,7 @@ class HomePage extends GetView<HomeController> with SmartLoadListWidget {
               child: IntrinsicHeight(
                 child: Column(
                   children: <Widget>[
-                    Obx(() => SearchHomeWidget()),
+                    const SearchHomeWidget(),
                     Expanded(child: _gridProductsWidget())
                   ],
                 ),
@@ -86,13 +86,16 @@ class HomePage extends GetView<HomeController> with SmartLoadListWidget {
       child: DefaultTabController(
         length: 6,
         child: TabBar(
-            indicatorWeight: 2,
-            indicatorColor: Colors.white,
+            tabAlignment: TabAlignment.start,
             isScrollable: true,
+            indicatorColor: Colors.white,
             labelStyle: MyTextStyle.textStyle(
-                style: const TextStyle(fontWeight: FontWeight.bold)),
-            unselectedLabelStyle:
-                MyTextStyle.textStyle(style: TextStyle(color: AppTheme.grey)),
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.white)),
+            unselectedLabelStyle: MyTextStyle.textStyle(
+                style: TextStyle(
+              color: AppTheme.grey,
+            )),
             tabs: const [
               Tab(
                 text: 'Cho bạn',

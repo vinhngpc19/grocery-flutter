@@ -1,21 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
 import 'package:grocery/routes/app_route.dart';
 import 'package:grocery/themes/app_theme.dart';
-import 'package:grocery/themes/app_theme.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   AppTheme.setStatusBarAndNavigationBarColors(ThemeMode.dark);
   // change status appbar status color(time, baterry ...)
   // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+  final preferences = await SharedPreferences.getInstance();
 
-  runApp(const MyApp());
+  runApp(MyApp(pref: preferences));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({super.key, required this.pref});
+  final SharedPreferences pref;
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool isLogin = false;
+  @override
+  void initState() {
+    if (widget.pref.getString('username') != null) {
+      isLogin = true;
+    } else {
+      isLogin = false;
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +61,8 @@ class MyApp extends StatelessWidget {
         locale: const Locale('en'),
         theme: AppTheme.lightTheme,
         getPages: AppRoute.pages,
-        initialRoute: AppRoute.routerDashboard,
+        initialRoute:
+            isLogin ? AppRoute.routerDashboard : AppRoute.routerSignIn,
         debugShowCheckedModeBanner: false,
       ),
     );

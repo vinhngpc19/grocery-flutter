@@ -14,10 +14,8 @@ class DashboardPage extends GetView<DashboardController> {
   final DashboardController controller = Get.put(DashboardController());
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        return false;
-      },
+    return PopScope(
+      canPop: false,
       child: Scaffold(
           body: SafeArea(
               child: Column(
@@ -28,7 +26,6 @@ class DashboardPage extends GetView<DashboardController> {
                         children: [
                           HomePage(),
                           CategoryPage(),
-                          Container(color: Colors.green),
                           Container(color: Colors.red),
                           ProfilePage()
                         ],
@@ -47,10 +44,6 @@ class DashboardPage extends GetView<DashboardController> {
                     BottomNavigationBarItem(
                       icon: Icon(Icons.category_outlined),
                       label: 'Danh mục',
-                    ),
-                    BottomNavigationBarItem(
-                      icon: Icon(Icons.messenger_outline_outlined),
-                      label: 'Tin nhắn',
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(Icons.notifications_active_outlined),
