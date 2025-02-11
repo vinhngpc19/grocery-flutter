@@ -31,6 +31,7 @@ class _MyAppState extends State<MyApp> {
     } else {
       isLogin = false;
     }
+    setState(() {});
     super.initState();
   }
 

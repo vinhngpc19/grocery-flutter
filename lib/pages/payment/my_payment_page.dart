@@ -5,6 +5,7 @@ import 'package:grocery/pages/cart/component/cart_item.dart';
 import 'package:grocery/pages/dashboard/dashboard_controller.dart';
 import 'package:grocery/themes/app_theme.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter/cupertino.dart';
 
 class Product {
   final String name;
@@ -59,8 +60,8 @@ class _MyPaymentPageState extends State<MyPaymentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
         centerTitle: true,
         title: const Text(
           'Thanh toán đơn hàng',
@@ -278,7 +279,38 @@ class _MyPaymentPageState extends State<MyPaymentPage> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      //
+                      showCupertinoModalPopup<void>(
+                        context: context,
+                        builder: (BuildContext context) => CupertinoAlertDialog(
+                          title: const Text('Xác nhận mua hàng'),
+                          content: const Text(
+                              'Bạn có muốn thanh toán những sản phẩm này?'),
+                          actions: <CupertinoDialogAction>[
+                            CupertinoDialogAction(
+                              /// This parameter indicates this action is the default,
+                              /// and turns the action's text to bold text.
+                              isDefaultAction: true,
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text('Quay lại',
+                                  style: TextStyle(
+                                      color:
+                                          Color.fromARGB(255, 20, 127, 214))),
+                            ),
+                            CupertinoDialogAction(
+                              /// This parameter indicates the action would perform
+                              /// a destructive action such as deletion, and turns
+                              /// the action's text color to red.
+                              isDestructiveAction: true,
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text('Đặt mua'),
+                            ),
+                          ],
+                        ),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: AppTheme.lightPrimaryColor,

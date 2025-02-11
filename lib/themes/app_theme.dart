@@ -16,31 +16,27 @@ class AppTheme {
   const AppTheme._();
 
   static final lightTheme = ThemeData(
-      brightness: Brightness.light,
-      primaryColor: lightPrimaryColor,
-      primaryColorLight: Colors.blue,
-      primaryColorDark: Colors.blue,
-      visualDensity: VisualDensity.adaptivePlatformDensity,
-      appBarTheme: AppBarTheme(backgroundColor: lightPrimaryColor),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          selectedLabelStyle: MyTextStyle.textStyle(style: const TextStyle()),
-          unselectedLabelStyle:
-              MyTextStyle.textStyle(style: const TextStyle())),
-      textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(foregroundColor: lightBackgroundColor)),
-      colorScheme: ColorScheme.light(secondary: lightSecondaryColor)
-          .copyWith(background: Colors.red));
+    brightness: Brightness.light,
+    primaryColor: lightPrimaryColor,
+    primaryColorLight: Colors.blue,
+    primaryColorDark: Colors.blue,
+    visualDensity: VisualDensity.adaptivePlatformDensity,
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        selectedLabelStyle: MyTextStyle.textStyle(style: const TextStyle()),
+        unselectedLabelStyle: MyTextStyle.textStyle(style: const TextStyle())),
+    textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(foregroundColor: lightBackgroundColor)),
+  );
 
   static Brightness get currentSystemBrightness =>
       // ignore: deprecated_member_use
       SchedulerBinding.instance.window.platformBrightness;
 
   static setStatusBarAndNavigationBarColors(ThemeMode themeMode) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.white,
       statusBarIconBrightness: Brightness.dark,
       systemNavigationBarIconBrightness: Brightness.dark,
-      systemNavigationBarColor: lightBackgroundColor,
       systemNavigationBarDividerColor: Colors.transparent,
     ));
   }

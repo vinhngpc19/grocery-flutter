@@ -54,31 +54,33 @@ class SearchPage extends GetView<SearchListController>
           borderRadius: BorderRadius.all(Radius.circular(2))),
       height: 38,
       margin: const EdgeInsets.only(right: 20, left: 4),
-      child: TextFormField(
-        onTapOutside: (event) {
-          controller.focusNode.unfocus();
-        },
-        onEditingComplete: () {
-          controller.search();
-          controller.focusNode.unfocus();
-        },
-        textInputAction: TextInputAction.go,
-        controller: controller.textController,
-        style: MyTextStyle.textStyle(style: const TextStyle()),
-        focusNode: controller.focusNode,
-        cursorColor: const Color.fromARGB(255, 33, 133, 220),
-        decoration: InputDecoration(
-          hintText: 'Tìm kiếm sản phẩm',
-          hintStyle:
-              MyTextStyle.textStyle(style: TextStyle(color: AppTheme.greyIcon)),
-          focusedBorder: InputBorder.none,
-          border: InputBorder.none,
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
-          prefixIcon:
-              const Icon(Icons.search, size: 24, color: Color(0xff868686)),
-        ),
-      ),
+      child: Obx(() => TextFormField(
+            onTapOutside: (event) {
+              controller.focusNode.unfocus();
+            },
+            onEditingComplete: () {
+              controller.search();
+              controller.focusNode.unfocus();
+            },
+            textInputAction: TextInputAction.go,
+            controller: controller.textController,
+            style: MyTextStyle.textStyle(style: const TextStyle()),
+            focusNode: controller.focusNode,
+            cursorColor: const Color.fromARGB(255, 33, 133, 220),
+            decoration: InputDecoration(
+              hintText: controller.categoryName.value == ''
+                  ? 'Tìm kiếm sản phẩm'
+                  : 'Tìm kiếm ${controller.categoryName}',
+              hintStyle: MyTextStyle.textStyle(
+                  style: TextStyle(color: AppTheme.greyIcon)),
+              focusedBorder: InputBorder.none,
+              border: InputBorder.none,
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+              prefixIcon:
+                  const Icon(Icons.search, size: 24, color: Color(0xff868686)),
+            ),
+          )),
     );
   }
 

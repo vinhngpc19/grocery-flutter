@@ -12,14 +12,14 @@ class SearchListController extends GetxController with SmartLoadListController {
   final RxList<ProductModel> listProducts = <ProductModel>[].obs;
   final RestClient restClient = RestClient();
   int currenPage = 1;
-
+  RxString categoryName = ''.obs;
   @override
   void onInit() async {
     focusNode.requestFocus();
     if (Get.arguments != null) {
       var list = await restClient.getListCategory(
           pageNumber: currenPage, category: Get.arguments.first);
-
+      categoryName.value = Get.arguments.last;
       listProducts.value = list.data ?? [];
     } else {
       var list = await restClient.getListProducts(pageNumber: currenPage);

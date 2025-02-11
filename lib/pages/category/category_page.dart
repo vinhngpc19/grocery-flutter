@@ -17,13 +17,7 @@ class CategoryPage extends GetView<CategoryController> {
     AssetImages.thit,
     AssetImages.gao
   ];
-  final List<String> listCategoryName = [
-    'Dầu ăn',
-    'Các loại cá',
-    'Rau củ',
-    'Các loại thịt',
-    'Các loại gạo'
-  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +63,7 @@ class CategoryPage extends GetView<CategoryController> {
               controller.onTapItem(index);
             },
             child: _buildCategoryItem(
-                listCategoryUrl[index], listCategoryName[index]),
+                listCategoryUrl[index], controller.listCategoryName[index]),
           );
         });
   }
